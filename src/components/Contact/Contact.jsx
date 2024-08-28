@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux";
-import { fetchDeleteThunk } from "../../redux/contactsOps";
+import { fetchDeleteThunk } from "../../redux/contacts/operations";
 
 const Contact = ({ name, number, id }) => {
+  console.log(name);
+
   const dispatch = useDispatch();
   return (
     <li>

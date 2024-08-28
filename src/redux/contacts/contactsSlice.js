@@ -3,7 +3,8 @@ import {
   fetchAddThunk,
   fetchContactsThunk,
   fetchDeleteThunk,
-} from "../contactsOps";
+} from "./operations.js";
+import { logoutThunk } from "../auth/operations.js";
 
 const initialState = {
   items: [],
@@ -27,6 +28,9 @@ const slice = createSlice({
       .addCase(fetchAddThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
         state.loading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
