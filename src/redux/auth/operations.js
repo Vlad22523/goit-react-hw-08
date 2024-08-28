@@ -1,14 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { clearToken, goitApi, setToken } from "../../config/goitApi";
+import toast from "react-hot-toast";
 
 export const registerThunk = createAsyncThunk(
   "register",
   async (credentials, thunkAPI) => {
     try {
       const { data } = await goitApi.post("users/signup", credentials);
+      toast.success(`Registration successfull!`);
       setToken(data.token);
       return data;
     } catch (error) {
+      toast.error(`Registration failed: Email is taken!`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -19,9 +22,11 @@ export const loginThunk = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await goitApi.post("users/login", credentials);
+      toast.success(`Login successfull!`);
       setToken(data.token);
       return data;
     } catch (error) {
+      toast.error(`Registration failed: Not exist account`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

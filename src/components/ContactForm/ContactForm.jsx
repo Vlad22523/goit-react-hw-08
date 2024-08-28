@@ -37,17 +37,18 @@ const ContactForm = () => {
     >
       <Form className={s.form}>
         <label className={s.label}>
-          <span>Name</span>
-          <Field name="name"></Field>
-          <ErrorMessage name="name" component="span" />
+          <span className={s.fieldTitle}>Name</span>
+          <Field className={s.input} name="name" />
+          <ErrorMessage className={s.error} name="name" component="span" />
         </label>
         <label className={s.label}>
-          <span>Number</span>
-          <Field name="number" type="text" />
-          <ErrorMessage name="number" component="span" />
+          <span className={s.fieldTitle}>Number</span>
+          <Field className={s.input} name="number" type="text" />
+          <ErrorMessage className={s.error} name="number" component="span" />
         </label>
-
-        <button type="submit">Add contact</button>
+        <button className={s.button} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );

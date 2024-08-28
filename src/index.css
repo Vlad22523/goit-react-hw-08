@@ -53,6 +53,13 @@ button:focus-visible {
 body {
   font-family: sans-serif;
   line-height: 1.5;
+  background: rgb(115, 226, 227);
+  background: linear-gradient(
+    0deg,
+    rgba(115, 226, 227, 0.726015406162465) 0%,
+    rgba(232, 212, 169, 1) 100%
+  );
+  min-height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {
@@ -66,4 +73,12 @@ body {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.loader {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
 }

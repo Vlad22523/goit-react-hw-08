@@ -16,11 +16,20 @@ const ContactsPage = () => {
   }, [dispatch]);
   return (
     <>
-      <h1>Phonebook</h1>
+      <h1
+        style={{
+          fontSize: "2.5em",
+          color: "#333",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
+        Phonebook
+      </h1>
       <ContactForm />
       <SearchBox />
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>Something wrong!</h1>}
+      {loading && <h1 style={{ textAlign: "center" }}>Loading...</h1>}
+      {error && <h1 style={{ textAlign: "center" }}>Something wrong!</h1>}
       <ContactList />
     </>
   );

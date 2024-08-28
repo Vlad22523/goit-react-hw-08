@@ -9,18 +9,19 @@ const SearchBox = () => {
   const filter = useSelector(selectFilters);
   const id = useId();
   return (
-    <>
+    <div className={s.searchBox}>
       <label className={s.label} htmlFor={id}>
         Find contacts by name
       </label>
       <input
+        className={s.input}
         type="text"
         name="findconts"
         value={filter}
         id={id}
         onChange={(e) => dispatch(findContacts(e.target.value))}
       />
-    </>
+    </div>
   );
 };
 

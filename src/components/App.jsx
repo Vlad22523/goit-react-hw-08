@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
@@ -10,15 +10,22 @@ import NotFound from "../pages/NotFound/NotFound";
 import { getMeThunk } from "../redux/auth/operations";
 import { PrivateRoute } from "../Routes/PrivateRoutes";
 import { PublicRoute } from "../Routes/PublicRoutes";
+import { selectIsRefresh } from "../redux/auth/selectors";
+import Loader from "./Loader/Loader";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefresh);
 
   useEffect(() => {
     dispatch(getMeThunk());
   }, [dispatch]);
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
