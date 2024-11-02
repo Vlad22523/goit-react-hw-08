@@ -23,12 +23,12 @@ const slice = createSlice({
     builder
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(getMeThunk.fulfilled, (state, action) => {
